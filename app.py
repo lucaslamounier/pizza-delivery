@@ -30,13 +30,13 @@ def webhook():
         return "ok", 200
     for entry in data["entry"]:
         for messaging_event in entry["messaging"]:
-                sender_id = messaging_event["sender"]["id"]
-                if messaging_event.get("message"):
-                    message_text = messaging_event["message"]["text"]
-                    fb_bot.handle_users_reply(sender_id, message_text)
-                elif messaging_event.get('postback'):
-                    postback = messaging_event['postback']['payload']
-                    fb_bot.handle_users_reply(sender_id, postback)
+            sender_id = messaging_event["sender"]["id"]
+            if messaging_event.get("message"):
+                message_text = messaging_event["message"]["text"]
+                fb_bot.handle_users_reply(sender_id, message_text)
+            elif messaging_event.get('postback'):
+                postback = messaging_event['postback']['payload']
+                fb_bot.handle_users_reply(sender_id, postback)
     return "ok", 200
 
 
